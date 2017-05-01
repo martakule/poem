@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Poem about People Dancing</title>
+     <script src="jquery-3.2.1.min.js"></script>
+     <link rel="stylesheet" href="poem-style.css">
+  </head>
+
+  <body>
+
+  <div id="wrapper">
+
+    <div id="enter" class="active"><span class="enter">ENTER</span></div>
+
+    <div id="one" data-level="one"><span class="element" data-text="were we ever there?"></span></div>
+    <div id="two" data-level="one" class="hub "><span class="element" data-text="we danced like songs"></span></div>
+    <div id="three" data-level="one"><span class="element" data-text="love rushing in our veins"></span></div>
+
+      <div data-level="two"><span class="element" data-text="the night felt so warm, so right"></span></div>
+      <div data-level="two" class="hub "><span class="element" data-text="like it was just for us"></span></div>
+
+      <div data-level="two"><span class="element" data-text="we danced like animals"></span></div>
+        <div data-level="three"><span class="element" data-text="that we are"></span></div>
+        <div data-level="three" class="last"><span class="element" data-text="but could we ever match the grace of herons?"></span></div>
+
+      <div data-level="two"><span class="element" data-text="and we danced like dreams"></span></div>
+        <div data-level="three"><span class="element" data-text="charged particles in a millisecond waltz"></span></div>
+        <div data-level="three" class="last"><span class="element" data-text="were we detected by the sensitive instruments?"></span></div>
+
+    <div data-level="one"><span class="element" data-text="maybe it was vodka"></span></div>
+
+      <div data-level="two"><span class="element" data-text="the songs were heavy"></span></div>
+      <div data-level="two" class="hub"><span class="element" data-text="rhythms like punches"></span></div>
+
+      <div data-level="two"><span class="element" data-text="making waves in the sea of bodies"></span></div>
+        <div data-level="three"><span class="element" data-text="could you tell anymore"></span></div>
+        <div data-level="three" class="last"><span class="element" data-text="where your body ended and mine began?"></span></div>
+
+      <div data-level="two"><span class="element" data-text="in a drunken haze everyone is beautiful"></span></div>
+        <div data-level="three"><span class="element" data-text="was it love we sensed"></span></div>
+        <div data-level="three" class="last"><span class="element" data-text="from the limbs and torsos that ground against us?"></span></div>
+
+    <div id="end"><span class="element" data-text="were we ever there?"></span></div>
+
+  </div>
+
+  <script src="typed.js"></script>
+<!--   <script>
+    $(function(){
+      $(".element").typed({
+        strings: ["First sentence."],
+        typeSpeed: 0
+      });
+    });
+  </script> -->
+
+    <script>
+      $(document).ready(function(){
+
+        $("#enter").click(function(){
+          $(this).removeClass("active");
+            $(this).next().addClass("active");
+            var text = $(this).next().children().data("text");
+            $(".active .element").typed({
+              strings: [text],
+              typeSpeed: 30
+            });
+        });
+
+        //Click on the current active tile
+        //to reveal the next and deactivate current
+        //If current is a branching tile,
+        //reveal two next tiles of the same level
+        //If current is the second-last tile,
+        //reveal the #end tile
+        $("#wrapper").on("click", ".active", function() {
+
+          if ($(this).hasClass("last")) {
+            $(this).removeClass("active").addClass("static");
+            $("#end").addClass("static");
+            var text = $("#end").children().data("text");
+            $("#end .element").typed({
+              strings: [text],
+              typeSpeed: 30
+            });
+          }
+
+          else if ($(this).hasClass("hub")) {
+            var currentLevel = $(this).data("level");
+            console.log("Current level is: " + currentLevel);
+            $(this).removeClass("active").addClass("static");
+            $(this).nextAll("[data-level='"+currentLevel+"']").eq(0).addClass("active").addClass("branch").addClass("left");
+            var text0 = $(this).nextAll("[data-level='"+currentLevel+"']").eq(0).children().data("text");
+              $(".active .element").eq(0).typed({
+                strings: [text0],
+                typeSpeed: 30
+              });
+            $(this).nextAll("[data-level='"+currentLevel+"']").eq(1).addClass("active").addClass("branch").addClass("right");
+            var text1 = $(this).nextAll("[data-level='"+currentLevel+"']").eq(1).children().data("text");
+              $(".active .element").eq(1).typed({
+                strings: [text1],
+                typeSpeed: 30
+              });
+          }
+
+          else {
+            $(this).removeClass("active").addClass("static");
+            $(this).next().addClass("active");
+            var text = $(this).next().children().data("text");
+            $(".active .element").typed({
+              strings: [text],
+              typeSpeed: 30
+            });
+          }
+        });
+
+        //Click on any static tile to fold up
+        //all siblings underneath
+        $("#wrapper").on("click", ".static", function() {
+          if ($(this).attr("id") != "end"){
+            $(this).nextAll(".static").removeClass("static");
+            $(this).nextAll(".active").removeClass("active");
+            $(this).removeClass("static").addClass("active");
+          }
+        });
+
+        //Click on one option and hide the other option
+         $("#wrapper").on("click", ".active.branch", function() {
+          $(".branch").removeClass("active").removeClass("right").removeClass("left");
+          $(this).addClass("static");
+        });
+
+      });
+
+    </script>
+
+
+
+  </body>
+
+</html>
