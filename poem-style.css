@@ -5,15 +5,15 @@
 
 body {
   -webkit-background-size: 100%; 
-    -moz-background-size: 100%; 
-    -o-background-size: 100%; 
-    background-size: 100%; 
-    -webkit-background-size: cover; 
-    -moz-background-size: cover; 
-    -o-background-size: cover; 
-    background-size: cover;
-  background: url(background-stars1.jpg) no-repeat center center fixed;
+  -moz-background-size: 100%; 
+  -o-background-size: 100%; 
+  background-size: 100%; 
+  -webkit-background-size: cover; 
+  -moz-background-size: cover; 
+  -o-background-size: cover;
+  background-size: 100%;
   background-size: cover;
+  background: url(background-stars1.jpg) no-repeat center center fixed;
   color: #00ff00;
   font-family: monospace;
   font-size: 1.5em;
