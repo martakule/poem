@@ -479,7 +479,7 @@
 		// show cursor
 		showCursor: true,
 		// character for cursor
-		cursorChar: " &#9654;",
+		cursorChar: " &#9612;",
 		// attribute to type (null == text)
 		attr: null,
 		// either html or text
