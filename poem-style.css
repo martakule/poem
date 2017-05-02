@@ -4,19 +4,11 @@
 }
 
 body {
-  -webkit-background-size: 100%; 
-  -moz-background-size: 100%; 
-  -o-background-size: 100%; 
-  background-size: 100%; 
-  -webkit-background-size: cover; 
-  -moz-background-size: cover; 
-  -o-background-size: cover;
-  background-size: 100%;
-  background-size: cover;
   background: url(background-stars1.jpg) no-repeat center center fixed;
+  background-size: cover;
   color: #00ff00;
   font-family: monospace;
-  font-size: 1.4em;
+  font-size: 1.5em;
   text-shadow: 0px 0px 15px #4fff4f;
 }
 
@@ -42,7 +34,14 @@ div {
   cursor: default;
 }
 
-#enter span{
+.enter {
+  display: block;
+  padding: 7px 0;
+  margin: 30px auto 10px auto;
+  max-width:4em;
+  border:3px solid #00ff00;
+  border-radius:7px;
+  box-shadow: 0px 0px 15px #4fff4f;
   font-size: 3em;
   -webkit-animation: blink 1.5s infinite;
   -moz-animation: blink 1.5s infinite;
