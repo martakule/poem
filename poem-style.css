@@ -34,6 +34,10 @@ div {
   cursor: default;
 }
 
+#enter {
+  padding:30px;
+}
+
 .enter {
   display: block;
   padding: 7px 0;
