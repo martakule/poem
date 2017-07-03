@@ -12,7 +12,7 @@ body {
   -o-background-size: cover;
   background-size: 100%;
   background-size: cover;
-  background: url(lovers.jpg) no-repeat left bottom fixed;
+  background: url(lovers.jpg) black no-repeat left bottom fixed;
   color: #00ff00;
   font-family: monospace;
   font-size: 1.3em;
